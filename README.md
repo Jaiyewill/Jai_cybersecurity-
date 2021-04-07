@@ -105,7 +105,7 @@ Metricbeat - collects machine metrics, such as uptime
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the ___playbook__ file to __Ansible node___.
+- Copy the ___playbook__ file to __Ansible node___
 - Update the ___host _ file to include webserver IP and ELK IP
 - Run the playbook, and navigate to http://13.87.190.207:5601/app/kibana#/home to check that the installation worked as expected, run 
  ansible-playbook elk.yml 

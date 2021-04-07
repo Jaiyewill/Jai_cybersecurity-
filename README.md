@@ -34,19 +34,21 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 
 | Name     | Function | IP Address | Operating System |
 |----------|----------|------------|------------------|
-| Jump Box | Gateway  | 10.0.0.1   | Linux            |
-|  Web1      Gateway     10.0.0.7    Linux    |                  |
-| Web2     | Gateway     10.0.0.8     Linux  |                  |
-| Web3   |   Gateway    | 10.0.0.9    Linux                |                                                                                                                       
-  Elk Server MOnitoring   10.2.0.4    Linux 
+| Jump Box | Gateway  | 10.0.0.4   | Linux            |    
+| Web1     | Gateway  | 10.0.0.7   | Linux            |      
+| Web2     | Gateway  | 10.0.0.8   | Linux            |      
+| Web3     | Gateway  | 10.0.0.9   | Linux            |      
+| Elk      | Gateway  | 10.2.0.4   | Linux            |      
+
 
 ### Access Policies
 
 The machines on the internal network are not exposed to the public Internet. 
 
 Only the ____jumpbox_ machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- _5601 kibana port 
-
+5601:5601
+9200: 9200
+5044: 5044
 
 Machines within the network can only be accessed by _jumpbox provisioner____.
 - _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_My IP address 99.249.20.174
@@ -55,29 +57,28 @@ A summary of the access policies in place can be found in the table below.
 
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
-| Jump Box | Yes/No              | 10.0.0.1 10.0.0.2    |
-|   Web1     | No                  10.0.0.7                     |                      |
-|   Web2       No                 |10.0.0.8                    |
-    Web3       No                  10.0.0.9
-    Elk-Server No                  10.2.0.4
+| Jump Box | Yes                 | 99.249.20.174        |
+| Jump Box |     No              | 10.2.0.4             |
+| Jump Box |     No              | 10.2.0.4             |
+| Jump Box |     No              | 10.2.0.4             |
 
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
 - _TODO: What is the main advantage of automating configuration with Ansible?_=
-Ansible is an open-source tool and it is free
-Very simple to set up and use: No special coding skills are necessary to use Ansible’s playbooks (more on playbooks later).
-Powerful: Ansible lets you model even highly complex IT workflows.
-Flexible: You can orchestrate the entire application environment no matter where it’s deployed. You can also customize it based on your needs.
-Agentless: You don’t need to install any other software or firewall ports on the client systems you want to automate. You also don’t have to set up a separate management structure.
-Efficient: Because you don’t need to install any extra software, there’s more room for application resources on your server.
+-Ansible is an open-source tool and it is free
+-Very simple to set up and use: No special coding skills are necessary to use Ansible’s playbooks (more on playbooks later).
+-Powerful: Ansible lets you model even highly complex IT workflows.
+-Flexible: You can orchestrate the entire application environment no matter where it’s deployed. You can also customize it based on your needs.
+-Agentless: You don’t need to install any other software or firewall ports on the client systems you want to automate. You also don’t have to set up a separate management structure.
+-Efficient: Because you don’t need to install any extra software, there’s more room for application resources on your server.
 
 The playbook implements the following tasks:
 - _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- Install pip3
-  Install memory
-  Launch and attach docker container 
-  Install Docker container 
+- -Install pip3
+  -Install memory
+  -Launch and attach docker container 
+  -Install Docker container 
 - ...
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
@@ -106,7 +107,7 @@ In order to use the playbook, you will need to have an Ansible control node alre
 SSH into the control node and follow the steps below:
 - Copy the ___playbook__ file to __Ansible node___.
 - Update the ___host _ file to include webserver IP and ELK IP
-- Run the playbook, and navigate to http://http://13.87.190.207:5601/app/kibana#/home to check that the installation worked as expected, run 
+- Run the playbook, and navigate to http://13.87.190.207:5601/app/kibana#/home to check that the installation worked as expected, run 
  ansible-playbook elk.yml 
  ansible-playbook filebeat-playbook.yml
  ansible-playbook metricbeat-playbook.yml 
